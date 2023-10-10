@@ -5,9 +5,53 @@ date: 2023-10-10
 output: github_document
 ---
 
-Loading Data
+```{r, include=FALSE}
+library(tidyverse)
+library(knitr)
+```
+
+###Loading Data
+
 ```{r}
 library(p8105.datasets)
 data("instacart")
+```
+
+# Problem 1
+
+## Part 1. Description of instacart data
+
+The instacart data set contains information about online grocery shopping from 2017, with `r nrow(instacart)` observations and `r ncol(instacart)` variables. Totaling at `r (nrow(instacart)*ncol(instacart))` data points. Key variables include `order_id`, `product_id`, `user_id`, if an item was `reordered`, `order_hour_of_day`, `days_since_prior_order` (ranging from `r min(pull(instacart, days_since_prior_order))` to `r max(pull(instacart, days_since_prior_order))`), `product_name`, `aisle`, and `department`.
+
+
+## Part 2. Exploring the data
+
+### How many aisles are there, and which aisles are the most items ordered from?
+
+```{r, aisle_count}
+instacart |> 
+  group_by(aisle_id, aisle) |> 
+  summarize(n_obs = n()) |> 
+  arrange(desc(n_obs))
+```
+
+There are `r max(pull(instacart, aisle_id))` aisles. `fresh vegetables`, `fresh fruits`, and `packaged vegetable fruits` are the three most ordered items. 
+
+### Make a plot that shows the number of items ordered in each aisle, limiting this to aisles with more than 10000 items ordered. Arrange aisles sensibly, and organize your plot so others can read it.
+
+```{r}
+
+```
+
+### Make a table showing the three most popular items in each of the aisles “baking ingredients”, “dog food care”, and “packaged vegetables fruits”. Include the number of times each item is ordered in your table.
+
+```{r}
+
+```
+
+### Make a table showing the mean hour of the day at which Pink Lady Apples and Coffee Ice Cream are ordered on each day of the week; format this table for human readers (i.e. produce a 2 x 7 table).
+
+```{r}
+
 ```
 
