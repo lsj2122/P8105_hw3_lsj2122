@@ -10,14 +10,14 @@ library(tidyverse)
 library(knitr)
 ```
 
-###Loading Data
+# Problem 1
+
+### Loading Data
 
 ```{r}
 library(p8105.datasets)
 data("instacart")
 ```
-
-# Problem 1
 
 ## Part 1. Description of instacart data
 
@@ -73,4 +73,17 @@ instacart |>
   spread(key = order_dow, value = mean_hour) |> 
   knitr::kable(digits = 2)
 ```
+
+# Problem 2
+
+### Loading Data
+
+```{r}
+library(p8105.datasets)
+data("brfss_smart2010")
+```
+
+## Part 1. Data cleaning
+
+
 
