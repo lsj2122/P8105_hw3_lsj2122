@@ -138,7 +138,7 @@ It is difficult to determine a direct pattern from the "Excellent" response data
 brfss |> 
   filter(year == "2006" | year == "2010", 
          locationabbr == "NY") |> 
-  ggplot(aes(x = response, y = data_value)) +
+  ggplot(aes(x = response, y = data_value, color = response)) +
   geom_col() + 
   facet_wrap(~ year) + 
   labs(
@@ -177,7 +177,19 @@ demo_accel =
 ### Part 2. Produce a table for the number of men and women in each education category
 
 ```{r}
+demo_accel |> 
+  group_by(sex, education) |> 
+  summarize(n_people = n()) |> 
+  pivot_wider(
+    names_from = education,
+    values_from = n_people
+  ) |> 
+  knitr::kable()
 
+demo_accel |> 
+  ggplot(aes(x = education, y = age, color = education)) +
+  geom_boxplot() +
+  facet_grid(.~sex)
 ```
 
 
