@@ -144,12 +144,59 @@ brfss |>
   labs(
     title = "Distribution of Data Value for Health Responses in 2006 and 2010 in NY State", 
     x = "Overal Health Reponse", 
-    y = "Data Value")
+    y = "Data Value",
+    fill = "Response Quality")
 ```
 
 Individuals who had responded "Very Good" to the survey responses had the highest data value in both 2006 and 2010, with its value rising a little over 100 between the years. Individuals who had reponsed "Poor" to the survey responses had the lowest data value in both 2006 and 2010. 
 
 # Problem 3
+
+### Part 1. Load, tidy, merge, and organize the data sets
+
+```{r}
+accel = read_csv("./data/nhanes_accel.csv")
+demo = read_csv("./data/nhanes_covar.csv", skip = 4)
+
+accel_tidy = 
+  accel |> 
+  janitor::clean_names() 
+
+demo_tidy = 
+  demo |> 
+  filter(age >= 21) |> 
+  drop_na() |>
+  mutate(
+    sex = recode(sex, "1" = "male", "2" = "female")) |> 
+  mutate(
+    education = recode(education, "1" = "Less than high school", "2" = "High school or equivalent", "3" = "More than high school")) |>
+  mutate(education = factor(education, levels = c("Less than high school", "High school or equivalent", "More than high school")))
+
+```
+
+
+### Part 2. Produce a table for the number of men and women in each education category
+
+```{r}
+
+```
+
+
+### Part 3. Create a total activity variable for each participant and plot
+
+```{r}
+
+```
+
+
+### Part 4. Make a three-panel plot that shows the 24-hour activity time courses for each education level and use color to indicate sex. 
+
+```{r}
+
+```
+
+
+### Part 5. Describe in words any patterns or conclusions you can make based on this graph; including smooth trends may help identify differences.
 
 
 
