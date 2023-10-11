@@ -190,15 +190,22 @@ demo_accel |>
   ggplot(aes(x = education, y = age, color = education)) +
   geom_boxplot() +
   facet_grid(.~sex)
-
 ```
 
-In total, there are _____ males and _____ females in the study. From the plot you can see that younger individuals tend to have a higher education than older individuals. 
+In total, there are `r sum(demo_accel$sex == "male")` males and `r sum(demo_accel$sex == "female")` females in the study. The box plot shows the age distribution of men and women in each education category. From the plot you can see that younger individuals tend to have a higher education than older individuals. There are slightly more males in the more than high school group than females and more females in the high school or equivalent group than males. 
 
 ### Part 3. Create a total activity variable for each participant and plot
 
-```{r}
-
+```{r, tot_activity}
+demo_accel |> 
+  mutate(
+   tot_activity = rowSums(across(min1:min1440), na.rm = TRUE) 
+  ) |> 
+  ggplot(aes(x = age, y = tot_activity, color = sex)) + 
+  geom_point(alpha = 0.5) +
+  geom_smooth(se = FALSE) +
+  labs(y = "total activity") +
+  facet_grid(.~education)
 ```
 
 
