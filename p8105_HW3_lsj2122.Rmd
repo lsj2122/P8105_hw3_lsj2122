@@ -132,8 +132,10 @@ excell_df |>
 
 ### Make a two-panel plot showing, for the years 2006, and 2010, distribution of data_value for responses (“Poor” to “Excellent”) among locations in NY State.
 
-```{r}
-
+```{r, ny_plot}
+brfss_ny = 
+  brfss |> 
+  select(year, data_value, response, locationdesc, locationabbr)
 ```
 
 
