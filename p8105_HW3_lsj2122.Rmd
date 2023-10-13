@@ -1,7 +1,7 @@
 ---
 title: "P8105 Homework 3"
 author: "Laylah Jones"
-date: 2023-10-10
+date: 2023-10-14
 output: github_document
 ---
 
@@ -230,6 +230,7 @@ ggplot(all_day, aes(x = time, y = mean, color = sex)) +
        y = "Mean value of activity")
 ```
 
+The three-panel plot shows the 24-hour activity time courses for each education level separated by sex. It can be seen that women have a higher mean value of activity than men in all three panels. In the "Less than high school" panel, there is a more relevant mean value of activity than in the other education groups. 
 
 
 
